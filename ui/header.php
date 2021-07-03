@@ -10,18 +10,17 @@ if (isset($folderChange)){
     include "dbConn/conn.php";
 }
 
+//hide profile dropdown based off if user is logged in or not
+if (isset($_SESSION['ffni_email'])){
+    $hide_divs = "";
+    $show_divs = "hidden";
+}else{
+    $hide_divs = "hidden";
+    $show_divs = "";
+}
 
-// if(isset($_SESSION['user_id'])){
-//     $user_id = $_SESSION['user_id'];
-//     $get_user_details = "SELECT * FROM `ffni_user` WHERE `ffni_user_id` = '$user_id'";
-//     $get_user_details_result = mysqli_query($conn,$get_user_details);
-//     if ($get_user_details_result->num_rows > 0) {
-//         while($row = $get_user_details_result->fetch_assoc()) {
-//             $user_name= $row["ffni_name"];
-//             $user_email = $row["ffni_email"];
-//         }
-//     }
-// }
+$user_name = $_SESSION['user_name'];
+$ffni_email = $_SESSION['ffni_email'];
 
 //adjust page title based dynamically
 $page = basename($_SERVER['PHP_SELF']);
@@ -58,6 +57,9 @@ switch ($page) {
         break;
     case "lake-profile.php":
         $page = "Lake Profile";
+        break;
+    case "user-profile.php":
+        $page = "User Profile";
         break;
     default;
         $page = "Fish Finder NI";

@@ -17,6 +17,7 @@ if ($check_email_exists_result->num_rows > 0) {
         $user_id = $row["ffni_user_id"];
         $user_password = $row["ffni_password"];
         $user_name = $row["ffni_name"];
+        $ffni_email = $row["ffni_email"];
     }
 }
 else {
@@ -29,6 +30,7 @@ if (password_verify($user_password_post, $user_password)) {
     //password is valid 
     $_SESSION['user_id'] = $user_id;
     $_SESSION['user_name'] = $user_name;
+    $_SESSION['ffni_email'] = $ffni_email;
     header('Location: ../index.php'); 
 } else {
     echo 'Invalid password.';

@@ -62,6 +62,16 @@ function Search_Rivers_By_County($search_by_river_county, $conn){
     }
 }
 
+function Get_River_Club_Count($conn, $select_river_by_id){
+    $get_river_club = "SELECT COUNT(*) FROM `river_club` WHERE `river_main_fk` = '$select_river_by_id'";
+    $get_river_club_result = mysqli_query($conn, $get_river_club);
+    $row = $get_river_club_result->fetch_row();
+    echo $row[0];
+
+    
+
+}
+
 function Select_River_By_ID($select_river_by_id, $conn){
     $river_id_select = "SELECT * FROM `river_main` WHERE `river_main_id` = '$select_river_by_id'";
     $river_id_select_result = mysqli_query($conn, $river_id_select);
@@ -74,6 +84,7 @@ function Select_River_By_ID($select_river_by_id, $conn){
             $river_source = $row["river_source"];
             $river_mouth = $row["river_mouth"];
             $river_towns = $row["river_towns"];
+            $river_description = $row["river_description"];
         }?>
             <h1 class="h3 mb-2 text-gray-800"><?php echo $river_name ?></h1><hr>
 
@@ -82,8 +93,7 @@ function Select_River_By_ID($select_river_by_id, $conn){
                         <h6 class="m-0 font-weight-bold text-primary"><?php echo $river_name ." | ". $rivers_counties; ?></h6>
                     </div>
                     <div class="card-body">
-                        <p class="mb-0">Buy a rod licence, you can get one <a href="https://angling.nidirect.gov.uk/citizen">here.</a> The 'Department of Agriculture, Environment and Rural Affairs' (DAERA) also provide short term game and coarse rod licences which tourists find useful as well as anglers who don't fish regularly. </p>
-                        <p class="mb-0">Have permission to fish in the chosen waters by usually buying a permit or day ticket from the fishery owner - note that you can't buy a permit or day ticket without a rod licence.</p>
+                        <?= $river_description; ?>
                     </div>
             </div>
 
@@ -118,7 +128,7 @@ function Select_River_By_ID($select_river_by_id, $conn){
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $river_mouth ?></div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-thumbtack fa-2x text-gray-300"></i>
+                                    <i class="fas fa-water fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -157,11 +167,11 @@ function Select_River_By_ID($select_river_by_id, $conn){
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        CLUBS</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo "None registered";?></div>
+                                        CLUBS REGISTERED</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php Get_River_Club_Count($conn,$select_river_by_id);?></div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -178,6 +188,34 @@ function Select_River_By_ID($select_river_by_id, $conn){
 
     }
 }
+
+
+function Get_River_Clubs($conn, $select_river_by_id){
+    $get_river_club = "SELECT * FROM `river_club` WHERE `river_main_fk` = '$select_river_by_id'";
+    $get_river_club_result = mysqli_query($conn, $get_river_club);
+
+    if (mysqli_num_rows($get_river_club_result) > 0){
+        while($row = mysqli_fetch_assoc($get_river_club_result)){
+            $river_club_name = $row["river_club_name"];
+            $river_club_main_town = $row["river_club_main_town"];
+            $river_club_start = $row["river_club_start"];
+            $river_club_end = $row["river_club_end"];
+            $river_club_id = $row["river_club_id"];
+            ?>
+            <tr>
+                <td><a href="river-club.php?riverID=<?php echo $river_club_id;?>"><?php echo $river_club_name?></a></td>
+                <td><?php echo $river_club_start?></td>
+                <td><?php echo $river_club_end?></td>
+                <td><?php echo $river_club_main_town?></td>
+            </tr>
+            <?php
+        }
+
+
+
+    }
+}
+
 
 ?>
 

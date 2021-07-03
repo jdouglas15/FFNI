@@ -31,11 +31,10 @@
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             View All Rivers</div><hr>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <a href="rivers-all.php" class="btn btn-success btn-icon-split">
+                                            <a href="rivers-all.php" class="btn btn-primary btn-lg btn-block">
                                                 <span class="icon text-white-50">
                                                 </span>
                                                 <span class="text">Press here to view all rivers</span>
-                                                <hr>
                                             </a>
                                         </div>
                                     </div>
