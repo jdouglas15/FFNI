@@ -203,12 +203,54 @@ function Get_River_Clubs($conn, $select_river_by_id){
             $river_club_id = $row["river_club_id"];
             ?>
             <tr>
-                <td><a href="river-club.php?riverID=<?php echo $river_club_id;?>"><?php echo $river_club_name?></a></td>
+                <td><a href="river-club.php?riverClubID=<?php echo $river_club_id;?>"><?php echo $river_club_name?></a></td>
                 <td><?php echo $river_club_start?></td>
                 <td><?php echo $river_club_end?></td>
                 <td><?php echo $river_club_main_town?></td>
             </tr>
             <?php
+        }
+
+
+
+    }
+}
+
+function Get_River_Club_By_ID($conn, $river_club_id){
+    global $river_club_name;
+    global $river_club_main_town;
+    global $river_club_start;
+    global $river_club_end;
+    global $river_club_description;
+    global $river_club_methods;
+    global $river_club_fish_type;
+    global $river_club_bag_limit;
+    global $river_club_url;
+    global $river_club_opening_times;
+    global $river_club_access;
+    global $river_club_river;
+    global $river_main_fk;
+    
+    $get_river_club_by_id = "SELECT * FROM `river_club` WHERE `river_club_id` = '$river_club_id'";
+    $get_river_club_by_id_result = mysqli_query($conn, $get_river_club_by_id);
+
+    if (mysqli_num_rows($get_river_club_by_id_result) > 0){
+        while($row = mysqli_fetch_assoc($get_river_club_by_id_result)){
+            $river_club_name = $row["river_club_name"];
+            $river_club_main_town = $row["river_club_main_town"];
+            $river_club_start = $row["river_club_start"];
+            $river_club_end = $row["river_club_end"];
+            $river_club_id = $row["river_club_id"];
+            $river_club_description = $row["river_club_description"];
+            $river_club_methods = $row["river_club_methods"];
+            $river_club_fish_type = $row["river_club_fish_type"];
+            $river_club_bag_limit = $row["river_club_bag_limit"];
+            $river_club_url = $row["river_club_url"];
+            $river_club_access = $row["river_club_access"];
+            $river_club_opening_times = $row["river_club_opening_times"];
+            $river_club_river = $row["river_club_river"];
+            $river_main_fk = $row["river_main_fk"];
+
         }
 
 

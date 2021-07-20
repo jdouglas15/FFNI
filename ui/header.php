@@ -19,8 +19,16 @@ if (isset($_SESSION['ffni_email'])){
     $show_divs = "";
 }
 
-$user_name = $_SESSION['user_name'];
-$ffni_email = $_SESSION['ffni_email'];
+
+
+
+if (isset($_SESSION['ffni_email'])){
+    $ffni_email = $_SESSION['ffni_email'];
+}
+if (isset($_SESSION['user_name'])){
+    $user_name = $_SESSION['user_name'];
+}
+
 
 //adjust page title based dynamically
 $page = basename($_SERVER['PHP_SELF']);
@@ -60,6 +68,9 @@ switch ($page) {
         break;
     case "user-profile.php":
         $page = "User Profile";
+        break;
+    case "river-club.php":
+        $page = "River Club";
         break;
     default;
         $page = "Fish Finder NI";

@@ -31,7 +31,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-water"></i>
-        <span>Water Type</span>
+        <span>Locations</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -40,10 +40,18 @@
             <a class="collapse-item" href="rivers.php">Rivers</a>
         </div>
     </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Add a Location</h6>
+            <a class="collapse-item" href="#">Add a Lake</a>
+            <a class="collapse-item" href="#">Add a River</a>
+            <a class="collapse-item" href="#">Add a River Club</a>
+        </div>
+    </div>
 </li>
 
 <!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
+<!-- <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
         aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
@@ -59,7 +67,7 @@
             <a class="collapse-item" href="utilities-other.html">Bug Reporter</a>
         </div>
     </div>
-</li>
+</li> -->
 
 <!-- Divider -->
 <hr class="sidebar-divider">
