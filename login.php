@@ -1,11 +1,6 @@
 <?php include "ui/header.php";
 
-if (isset($_SESSION['login_email_failed'])){
-    $login_email_failed = $_SESSION['login_email_failed'];
-}
-if (!isset($_SESSION['login_email_failed'])){
-    $login_email_failed = "";
-}
+
 if (isset($_SESSION['register_success'])){
     $register_success_alert = $_SESSION['register_success'];
 }
@@ -14,6 +9,7 @@ if (!isset($_SESSION['register_success'])){
 }
 
 ?>
+
 
 <body class="bg-gradient-primary">
 
@@ -31,9 +27,8 @@ if (!isset($_SESSION['register_success'])){
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                <code><p><?php echo $register_success_alert; unset ($_SESSION["register_success"]);?></p></code>
-                                <code><p><?php echo $login_email_failed; unset ($_SESSION["login_email_failed"]);?></p></code>
                                     <div class="text-center">
+                                    <?php if(isset($message, $alertType)){Get_Message($message, $alertType);} ?>
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST" action="processes/loginProcess.php">

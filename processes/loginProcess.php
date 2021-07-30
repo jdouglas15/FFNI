@@ -21,7 +21,9 @@ if ($check_email_exists_result->num_rows > 0) {
     }
 }
 else {
-    $_SESSION["login_email_failed"] = "This email isn't recognised, please check your email";
+    $message = "This email isn't recognised, please check your email";
+    $alertType = "danger";
+    Set_Message($message, $alertType);
     header('Location: ../login.php'); 
 }
 

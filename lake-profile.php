@@ -167,20 +167,11 @@ if (mysqli_num_rows($get_lake_info_result) > 0) {
                     </div>
 
                     <h1 class="h3 mb-2 text-gray-800"><?= "Reports | Updates" ?></h1><br>
-                    <?php
-                    $get_lake_reports = "SELECT * FROM `lake_reports` WHERE `lake_id` = '$lake_main_id'";
-                    $get_lake_reports_result = mysqli_query($conn, $get_lake_reports);
-
+                    <?php 
+                    include "sql/select.php";
+                    Select_Appropriate_Lake_Comments($conn, $lake_main_id); 
                     ?>
-                    <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Fishing Reports</h6>
-                            </div>
-                            <div class="card-body">
-                                <p class="mb-0"><?php echo $lake_general_description; ?></p><hr>
-                            </div>
-                    </div> 
-
+  
 
 
             </div>  

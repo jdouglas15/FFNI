@@ -21,11 +21,14 @@ $insert_user = "INSERT INTO `ffni_user`(`ffni_name`, `ffni_email`, `ffni_passwor
 $insert_user_result = mysqli_query($conn, $insert_user);
 
 if($insert_user_result){
-    $_SESSION["register_success"] = "Successful registered, please login";
-    //redirect 
+    $message = "Registration successful, please login";
+    $alertType = "success";
+    Set_Message($message, $alertType);
     header('Location: ../login.php'); 
 }else{
-    $_SESSION["register_failed"] = "Registered failed, please try again or contact <email>";
+    $message = "Registration failed, please try again";
+    $alertType = "danger";
+    Set_Message($message, $alertType);
     header('Location: ../register.php'); 
 }
 
