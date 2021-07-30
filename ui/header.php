@@ -75,6 +75,26 @@ switch ($page) {
     default;
         $page = "Fish Finder NI";
 }
+if (isset($_SESSION["alertMessage"])){
+    $message = $_SESSION["alertMessage"];
+    $alertType = $_SESSION["alertType"];
+}
+// Set Message.
+function Set_Message($message, $alertType){
+  $_SESSION["alertMessage"] = $message;
+  $_SESSION["alertType"] = $alertType;
+}
+// Get Message.
+function Get_Message($message, $alertType){
+    if (isset($_SESSION["alertMessage"])){
+        ?>
+        <div class="alert alert-<?=$alertType?>" role="alert">
+            <?= $message ?>
+        </div>
+        <?php
+        unset($_SESSION["alertMessage"],$_SESSION["alertType"]);
+    }
+}
 
 ?>
 

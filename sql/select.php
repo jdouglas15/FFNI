@@ -258,6 +258,37 @@ function Get_River_Club_By_ID($conn, $river_club_id){
     }
 }
 
+function Select_Appropriate_Lake_Comments($conn, $lake_main_id){
+    $select_lake_comments = "SELECT * FROM `lake_reports` WHERE `lake_reports_id` = '$lake_main_id' ";
+    $select_lake_comments_result = mysqli_query($conn, $select_lake_comments);
+
+    global $lake_id;
+    global $lake_reports_user;
+    global $lake_reports_content;
+    global $lake_reports_timestamp;
+
+
+    if (mysqli_num_rows($select_lake_comments_result) > 0){
+        while($row = mysqli_fetch_assoc($select_lake_comments_result)){
+            $lake_id = $row["lake_id"];
+            $lake_reports_user = $row["lake_reports_user"];
+            $lake_reports_content = $row["lake_reports_content"];
+            $lake_reports_timestamp = $row["lake_reports_timestamp"];
+        }
+        ?>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"><?= $lake_reports_timestamp . " | " . $lake_reports_user ?></h6>
+            </div>
+            <div class="card-body">
+                <p class="mb-0"><?= $lake_reports_content; ?></p><hr>
+            </div>
+        </div> 
+
+        <?php
+    }
+}
+
 
 ?>
 
